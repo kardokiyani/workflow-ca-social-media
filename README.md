@@ -36,3 +36,5 @@ Please post your PR to the peer review forum and review 2 other submissions.
 If you would like a teacher review please request this at least 5 days before the deadline.
 
 You must complete the course evaluation to unlock delivery.
+
+[![Deploy static content to Pages](https://github.com/kardokiyani/workflow-ca-social-media/actions/workflows/test.static.yml/badge.svg)](https://github.com/kardokiyani/workflow-ca-social-media/actions/workflows/test.static.yml)
