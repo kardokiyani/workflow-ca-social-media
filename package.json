@@ -45,6 +45,6 @@
     ]
   },
   "dependencies": {
-    "bootstrap": "^5.2.0"
+    "bootstrap-dark-5": "^1.1.3"
   }
 }

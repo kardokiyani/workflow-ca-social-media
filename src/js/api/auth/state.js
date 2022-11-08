@@ -1,5 +1,7 @@
-import { load } from "../../storage/index.js";
+// STATE JS
 
-export const isLoggedIn = () => Boolean(load("token"));
+import { load } from '../../storage/index.js';
 
-export const profile = () => load("profile");
+export const isLoggedIn = () => Boolean(load('token'));
+
+export const profile = () => load('profile');
