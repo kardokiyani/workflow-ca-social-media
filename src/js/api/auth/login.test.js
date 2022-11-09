@@ -9,6 +9,7 @@ const TestingThePassword = 'kardokiyani1998';
 const TestingSuccess = {
   name: 'Kardo',
   email: 'kardo@noroff.no',
+  accessToken: 'token',
 };
 
 class LocalStorageMock {
