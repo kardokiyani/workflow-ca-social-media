@@ -53,7 +53,7 @@ function fetchInvalidLogin() {
   });
 }
 
-describe('login', () => {
+describe('The user can login', () => {
   it('Returns a valid access token in local storage and valid response object', async () => {
     global.fetch = jest.fn(() => fetchSuccess());
     const expectedToken = TestingSuccess.accessToken;
