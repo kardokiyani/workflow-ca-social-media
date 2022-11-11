@@ -2,13 +2,13 @@
 
 import { createPost } from './create';
 
-const TestingTheTitle = 'Testing';
-const TestingTheBody = 'Just enjoy your day with testing';
+const TestingTheTitle = 'Testing!';
+const TestingTheBody = 'Just enjoy your day with testing!';
 const TestingTheMedia =
-  'https://img.theculturetrip.com/472x265/smart/wp-content/uploads/2020/11/santorini.jpg';
+  'https://hips.hearstapps.com/hmg-prod/images/2022-lamborghini-huracan-tecnica-101-1657303967.jpg?crop=0.700xw:0.790xh;0.0717xw,0.183xh&resize=640:*';
 const TestingTheTags = ['Test', 'All', 'Day', 'Long'];
 const TestingTheBadTags = 'Jest, Test, Rest';
-const TestingSuccess = `{"title":"Testing","body":"Just enjoy your day with testing","tags":["Test", "All", "Day", "Long"],"media":"https://img.theculturetrip.com/472x265/smart/wp-content/uploads/2020/11/santorini.jpg","created":"2022-11-02T00:17:18.803Z","updated":"2022-11-02T00:17:18.803Z","id":121,"_count":{"comments":0,"reactions":0}}`;
+const TestingSuccess = `{"title":"Testing","body":"Just enjoy your day with testing","tags":["Test", "All", "Day", "Long"],"media":"https://hips.hearstapps.com/hmg-prod/images/2022-lamborghini-huracan-tecnica-101-1657303967.jpg?crop=0.700xw:0.790xh;0.0717xw,0.183xh&resize=640:*"`;
 
 function createSuccess() {
   return Promise.resolve({
@@ -36,7 +36,7 @@ function createUnauthorized() {
 }
 
 describe('createPost', () => {
-  it('Returns a response object with corresponding values for inputs', async () => {
+  it('Returns a RESPONSE OBJECT with correct values for inputs!', async () => {
     global.fetch = jest.fn(() => createSuccess());
     const response = await createPost(
       TestingTheTitle,
@@ -50,7 +50,7 @@ describe('createPost', () => {
     expect(response.tags).toEqual(TestingTheTags);
   });
 
-  it('If a bad request was made, it will throw an error message', async () => {
+  it('If a BAD REQUEST was made, it will throw an error message!', async () => {
     global.fetch = jest.fn(() => createBadRequest());
     await expect(
       createPost(
@@ -62,7 +62,7 @@ describe('createPost', () => {
     ).rejects.toThrow('Sorry, bad Request!');
   });
 
-  it('If a request was unauthorized, it will throw an error message', async () => {
+  it('If a request was UNAUTHORIZED, it will throw an error message!', async () => {
     global.fetch = jest.fn(() => createUnauthorized());
     await expect(
       createPost(

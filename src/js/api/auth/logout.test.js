@@ -35,7 +35,7 @@ class LocalStorageMock {
 
 global.localStorage = new LocalStorageMock();
 
-describe('The user can log out', () => {
+describe('The user can LOG OUT!', () => {
   it('Returns a valid access token in local storage and valid response object', () => {
     localStorage.setItem('profile', JSON.stringify(TestingTheProfile));
     localStorage.setItem('token', JSON.stringify(TestingToAccessTheToken));

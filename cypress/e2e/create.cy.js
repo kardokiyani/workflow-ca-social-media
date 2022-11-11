@@ -1,92 +1,95 @@
 // CREATE.CY.JS
 
-describe('Creating a post', () => {
+describe('The user can CREATE a post!', () => {
   beforeEach(() => {
-    cy.clearLocalStorage();
-    cy.visit('/');
-    cy.wait(800);
-    cy.get('.btn-close:visible').click();
-    cy.wait(800);
-    cy.get("button[data-auth='login']:visible").click();
-    cy.wait(800);
-    cy.get("input[type='email']:visible")
-      .should('exist')
-      .type(Cypress.env('kardo@noroff.no'));
-    cy.get("input[type='password']:visible")
-      .should('exist')
-      .type(Cypress.env('kardokiyani1998'));
-    cy.get('.btn-success:visible').click();
+    cy.visit('./');
+    cy.get('#registerModalLabel')
+      .should('have.text', 'Create Profile')
+      .should('be.visible');
+    cy.wait(1000);
+    cy.get('#registerForm')
+      .find('.btn-outline-success')
+      .should('be.visible')
+      .click();
+    cy.get('#loginModalLabel')
+      .should('have.text', 'Login')
+      .should('be.visible');
+    const email = 'kardo@noroff.no';
+    cy.wait(1000);
+    const password = 'kardokiyani1998';
+    cy.get('#loginEmail').type(`${email}`);
+    cy.get('#loginPassword').type(`${password}`);
+    cy.wait(1000);
+    cy.get('#loginForm .btn-success').should('be.visible').click();
+  });
+
+  it('Here it checks if there is a TITLE!', () => {
+    cy.wait(1000);
+    cy.get('#footerActions .btn-outline-success')
+      .should('have.text', 'Created a new Post!')
+      .click();
     cy.wait(2000);
-    cy.visit('/');
-  });
-
-  it('The user can create a post', () => {
-    cy.wait(800);
-    cy.get('a[href="/?view=post"]').click();
-    cy.wait(1200);
-    cy.url().should('include', 'post');
-    cy.get('#post-title').should('exist').type('Cypress Testing Posts');
-    cy.get('#post-tags').should('exist').type('Cypress, Testing, End To End');
-    cy.get('#post-media')
-      .should('exist')
+    cy.get('#postTitle').should('be.visible');
+    cy.get('#postTags').should('be.visible').type('Just a cypress tag');
+    cy.get('#postMedia')
+      .should('be.visible')
       .type(
-        'https://img.theculturetrip.com/472x265/smart/wp-content/uploads/2020/11/santorini.jpg'
+        'https://hips.hearstapps.com/hmg-prod/images/2022-lamborghini-huracan-tecnica-101-1657303967.jpg?crop=0.700xw:0.790xh;0.0717xw,0.183xh&resize=640:*'
       );
-    cy.get('#post-body')
-      .should('exist')
-      .type('This post has been made with the help of using Cypress');
-    cy.get('button[data-action="submit"]').click();
-    cy.wait(4000);
-    cy.url().should('include', 'view=post&postId=');
-    cy.wait(800);
-    cy.get('button[data-action="delete"]:visible').click();
-    cy.wait(800);
-    cy.url().should('include', '/');
+    cy.get('#postBody')
+      .should('be.visible')
+      .type('Here is the body, nothing special', { force: true });
+    cy.wait(1000);
+    cy.get("span[data-action='publish']")
+      .should('be.visible')
+      .click({ force: true });
+    cy.get('#postTitle:invalid').should('have.length', 1);
+    cy.get('#postTitle').then(($input) => {
+      expect($input[0].validationMessage).to.eq(
+        'Error, please fill in this field, thanks!'
+      );
+    });
   });
 
-  it('Can validate inputs, require inputs and return validation messages', () => {
-    cy.wait(800);
-    cy.get('a[href="/?view=post"]').click();
-    cy.wait(1200);
-    cy.url().should('include', 'post');
-    cy.get('button[data-action="submit"]').click();
-    cy.get('#post-title:invalid')
-      .invoke('prop', 'validationMessage')
-      .should('exist');
-    cy.wait(300);
-    cy.get('#post-title').should('exist').type('Cypress-Testing-Posts');
-    cy.get('#post-media').should('exist').type('Not a URL');
-    cy.get('button[data-action="submit"]').click();
-    cy.get('#post-media:invalid')
-      .invoke('prop', 'validationMessage')
-      .should('exist');
-    cy.wait(300);
-    cy.get('#post-title').should('exist').clear();
-    cy.get('#post-media').should('exist').clear();
-    cy.get('#post-tags').should('exist').type('Cypress, Testing, End To End');
-    cy.get('#post-media')
-      .should('exist')
+  it('Here it checks if the image url is VALID!', () => {
+    cy.wait(1000);
+    cy.get('#footerActions .btn-outline-success')
+      .should('have.text', 'New Post')
+      .click();
+    cy.wait(2000);
+    cy.get('#postTitle').should('be.visible').type('Here we have a url test!');
+    cy.get('#postTags').should('be.visible');
+    cy.get('#postMedia').should('be.visible').type('Not a URL!');
+    cy.get('#postBody').should('be.visible');
+    cy.wait(1000);
+    cy.get("span[data-action='publish']")
+      .should('be.visible')
+      .click({ force: true });
+    cy.get('#postMedia:invalid').should('have.length', 1);
+    cy.get('#postMedia').then(($input) => {
+      expect($input[0].validationMessage).to.eq('Please enter a URL!');
+    });
+  });
+
+  it('The user can CREATE a post!', () => {
+    cy.wait(1000);
+    cy.get('#footerActions .btn-outline-success')
+      .should('have.text', 'New Post')
+      .click();
+    cy.wait(2000);
+    cy.get('#postTitle')
+      .should('be.visible')
+      .type('Just a cypress title, relax!');
+    cy.get('#postTags').should('be.visible').type('Just a cypress tag, relax!');
+    cy.get('#postMedia')
+      .should('be.visible')
       .type(
-        'https://img.theculturetrip.com/472x265/smart/wp-content/uploads/2020/11/santorini.jpg'
+        'https://hips.hearstapps.com/hmg-prod/images/2022-lamborghini-huracan-tecnica-101-1657303967.jpg?crop=0.700xw:0.790xh;0.0717xw,0.183xh&resize=640:*'
       );
-    cy.get('#post-body')
-      .should('exist')
-      .type('This post has been made with the help of using Cypress');
-    cy.get('button[data-action="submit"]').click();
-    cy.get('#post-title:invalid')
-      .invoke('prop', 'validationMessage')
-      .should('exist');
-  });
-
-  it('Takes care of the thrown errors', () => {
-    cy.wait(600);
-    cy.get('a[href="/?view=post"]').click();
-    cy.wait(1200);
-    cy.url().should('include', 'post');
-    cy.get('#post-title').should('exist').type('Cypress Testing Posts');
-    cy.clearLocalStorage();
-    cy.get('button[data-action="submit"]').click();
-    cy.wait(1200);
-    cy.url().should('include', '/');
+    cy.get('#postBody').type('ORANGE LAMBORGHINI', { force: true });
+    cy.wait(1000);
+    cy.get("span[data-action='publish']")
+      .should('be.visible')
+      .click({ force: true });
   });
 });

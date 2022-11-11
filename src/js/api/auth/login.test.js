@@ -54,7 +54,7 @@ function fetchInvalidLogin() {
 }
 
 describe('The user can login', () => {
-  it('Returns a valid access token in local storage and valid response object', async () => {
+  it('Here it returns a valid ACCESS TOKEN in local storage and valid RESPONSE OBJECT!', async () => {
     global.fetch = jest.fn(() => fetchSuccess());
     const expectedToken = TestingSuccess.accessToken;
     const response = await login(TestingTheMail, TestingThePassword);
@@ -63,7 +63,7 @@ describe('The user can login', () => {
     expect(response).toEqual(TestingSuccess);
   });
 
-  it('Throws error message on invalid details', async () => {
+  it('Throws error message on INVALID details!', async () => {
     global.fetch = jest.fn(() => fetchInvalidLogin());
     await expect(login(TestingTheMail, TestingThePassword)).rejects.toThrow(
       'Unauthorized'
