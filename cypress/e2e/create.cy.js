@@ -44,7 +44,6 @@ describe('The user can CREATE a post.', () => {
       .should('be.visible')
       .click({ force: true });
     cy.get('#postTitle:invalid').should('have.length', 1);
-    });
   });
 
   it('Here it checks if the image url is VALID!', () => {
