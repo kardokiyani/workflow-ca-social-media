@@ -1,6 +1,6 @@
 // CREATE.CY.JS
 
-describe('The user can CREATE a post!', () => {
+describe('The user can CREATE a post.', () => {
   beforeEach(() => {
     cy.visit('./');
     cy.get('#registerModalLabel')
@@ -23,7 +23,7 @@ describe('The user can CREATE a post!', () => {
     cy.get('#loginForm .btn-success').should('be.visible').click();
   });
 
-  it('Here it checks if there is a TITLE!', () => {
+  it('Here it checks if there is a TITLE.', () => {
     cy.wait(1000);
     cy.get('#footerActions .btn-outline-success')
       .should('have.text', 'Created a new Post!')
