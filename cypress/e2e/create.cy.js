@@ -26,7 +26,7 @@ describe('The user can CREATE a post.', () => {
   it('Here it checks if there is a TITLE.', () => {
     cy.wait(1000);
     cy.get('#footerActions .btn-outline-success')
-      .should('have.text', 'Created a new Post!')
+      .should('have.text', 'New Post')
       .click();
     cy.wait(2000);
     cy.get('#postTitle').should('be.visible');
@@ -44,10 +44,6 @@ describe('The user can CREATE a post.', () => {
       .should('be.visible')
       .click({ force: true });
     cy.get('#postTitle:invalid').should('have.length', 1);
-    cy.get('#postTitle').then(($input) => {
-      expect($input[0].validationMessage).to.eq(
-        'Error, please fill in this field, thanks!'
-      );
     });
   });
 
