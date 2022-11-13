@@ -57,7 +57,7 @@ describe('The user can CREATE a post!', () => {
       .should('have.text', 'New Post')
       .click();
     cy.wait(2000);
-    cy.get('#postTitle').should('be.visible').type('Here we have a url test!');
+    cy.get('#postTitle').should('be.visible').type('Here we have a url test.');
     cy.get('#postTags').should('be.visible');
     cy.get('#postMedia').should('be.visible').type('Not a URL!');
     cy.get('#postBody').should('be.visible');
@@ -67,7 +67,7 @@ describe('The user can CREATE a post!', () => {
       .click({ force: true });
     cy.get('#postMedia:invalid').should('have.length', 1);
     cy.get('#postMedia').then(($input) => {
-      expect($input[0].validationMessage).to.eq('Please enter a URL!');
+      expect($input[0].validationMessage).to.eq('Please enter a URL.');
     });
   });
 
@@ -80,7 +80,7 @@ describe('The user can CREATE a post!', () => {
     cy.get('#postTitle')
       .should('be.visible')
       .type('Just a cypress title, relax!');
-    cy.get('#postTags').should('be.visible').type('Just a cypress tag, relax!');
+    cy.get('#postTags').should('be.visible').type('Just a cypress tag, relax.');
     cy.get('#postMedia')
       .should('be.visible')
       .type(
