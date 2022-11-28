@@ -1,12 +1,12 @@
 // LOGIN.CY.JS
 
-describe('The user can LOG IN to the site!', () => {
+describe('The user can LOG IN to the site.', () => {
   beforeEach(() => {
     cy.visit('./');
     cy.clearLocalStorage();
   });
 
-  it('This checks if the EMAIL the user has put in, are correct or not!', () => {
+  it('This checks if the EMAIL the user has put in, are correct or not.', () => {
     cy.get('#registerModalLabel')
       .should('have.text', 'Create Profile')
       .should('be.visible');
@@ -31,7 +31,7 @@ describe('The user can LOG IN to the site!', () => {
     });
   });
 
-  it('This checks if the PASSWORD the user has put in, are correct or not!', () => {
+  it('This checks if the PASSWORD the user has put in, are correct or not.', () => {
     cy.get('#registerModalLabel')
       .should('have.text', 'Create Profile')
       .should('be.visible');
