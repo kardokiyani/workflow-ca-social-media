@@ -1,4 +1,6 @@
-export * from "./login.js"
-export * from "./logout.js"
-export * from "./register.js"
-export * from "./state.js"
+// INDEX JS
+
+export * from './login.js';
+export * from './logout.js';
+export * from './register.js';
+export * from './state.js';
